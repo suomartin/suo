@@ -1,0 +1,34 @@
+<?php echo $this->doctype('HTML5')?>
+
+<html>
+<head>
+<?php
+    $this->headMeta()->setCharset('UTF-8');
+    $this->headTitle('Терминал')
+        ->headTitle('СУО "Ласточка"')
+        ->setSeparator(' - ');
+    //$this->headLink()->appendStylesheet($this->baseUrl('/style/atm.css'), 'all');
+    /*Zend_Dojo::enableView($this);
+    $this->dojo()->enable()
+            ->setDjConfigOption('locale', 'ru')
+            ->setLocalPath($this->baseUrl('/js/dojo/dojo.js'))
+            ->addStyleSheetModule('dijit.themes.claro')
+            ->requireModule('dojox.json.query');
+
+    $s_dojo_dialogs = $this->partial('_partial/dialogs.phtml');
+
+    $this->headScript()->appendFile($this->baseUrl('/js/suo/atm.js'))*/?>
+  <?php echo $this->headTitle()?>
+
+  <?php echo $this->headMeta()?>
+
+  <?php //echo $this->headLink()?>
+
+  <?php //echo $this->dojo()?>
+
+  <?php //echo $this->headScript()?>
+</head>
+<body class="claro">
+<?php echo $this->layout()->content?>
+</body>
+</html>

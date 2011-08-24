@@ -1,0 +1,44 @@
+<?php echo $this->doctype('HTML5')?>
+
+<html>
+<head>
+  <?php $this->headMeta()->setCharset('UTF-8');
+    $this->headTitle('Настройка')
+        ->headTitle('СУО "Ласточка"')
+        ->setSeparator(' - ');
+    /*$this->headLink()->appendStylesheet($this->baseUrl('/style/admin.css'));
+    Zend_Dojo::enableView($this);
+    $this->dojo()->enable()
+            ->setLocalPath($this->baseUrl('/js/dojo/dojo.js'))
+            ->requireModule('dijit.Dialog')
+            ->requireModule('dijit.form.CheckBox')
+            ->addStyleSheetModule('dijit.themes.claro');
+
+    $s_dojo_dialogs = $this->partial('_partial/dialogs.phtml');
+
+    $this->headScript()->appendFile($this->baseUrl('/js/suo/admin.js'));*/
+
+    echo $this->headMeta()?>
+
+  <?php echo $this->headTitle()?>
+
+  <?php //echo $this->headLink()?>
+
+  <?php //echo $this->dojo()?>
+
+  <?php //echo $this->headScript()?>
+</head>
+<body class="claro">
+<div id="view">
+<h1>Настройка</h1>
+<?php echo $this->layout()->content?>
+  <br />
+  <br />
+  <div>
+    <a href="<?php echo $this->baseUrl('/admin/index/list')?>">Меню АРМ</a>
+    <a href="<?php echo $this->baseUrl('/admin/index/logout')?>">Выход</a>
+  </div>
+</div>
+    <div id="dialogs"><?php //echo $s_dojo_dialogs;?></div>
+</body>
+</html>
