@@ -45,4 +45,16 @@ class AddTicketTest extends \PHPUnit_Framework_TestCase
 
         $this->getService()->addTicket($n_room_id);
     }
+
+    public function testRoomIsNotFound()
+    {
+        $this->o_room_repository_mock
+            ->expects($this->once())
+            ->method('find')
+            ->with($this->anything())
+            ->will($this->returnValue(null));
+        $this->setExpectedException('DomainException', 'Room is not found');
+
+        $this->getService()->addTicket(10);
+    }
 }

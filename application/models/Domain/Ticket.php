@@ -2,8 +2,6 @@
 
 namespace Domain;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * @Entity
  * @Table(name="ticket")
@@ -33,9 +31,25 @@ class Ticket
     protected $start_time;
 
     /**
+     * @Column(type="string", length=50)
+     */
+    protected $status;
+
+    /**
      * @ManyToOne(targetEntity="Room")
      */
     protected $room;
+
+    /**
+     * @Column(nullable="true")
+     * @ManyToOne(targetEntity="User")
+     */
+    protected $user;
+
+    const STATUS_CREATED = 'created';
+    const STATUS_IN_QUEUE = 'in_queue';
+    const STATUS_CALLING = 'calling';
+    const STATUS_CLOSED = 'closed';
 
     public function __construct(Room $o_room, $s_start_date = 'now', $s_start_time = 'now')
     {
@@ -44,5 +58,17 @@ class Ticket
         $this->start_time = new \DateTime($s_start_time);
 
         $this->room = $o_room;
+
+        $this->status = self::STATUS_CREATED;
+    }
+
+    /**
+     * Установка статуса
+     *
+     * @param enum $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 }

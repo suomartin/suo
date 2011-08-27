@@ -25,7 +25,7 @@ class Atm
     /**
      * @Column(type="string", length=50)
      */
-    protected $place;
+    protected $description;
 
     /**
      * @ManyToMany(targetEntity="Room", inversedBy="users")
@@ -33,11 +33,14 @@ class Atm
      */
     protected $rooms;
 
-    public function __construct($netaddress, $place)
+    public function __construct($netaddress, $description)
     {
+        if (!$netaddress) {
+            throw new \DomainException('Net address cannot be empty');
+        }
         $this->netaddress = $netaddress;
-        $this->place = $place;
+        $this->description = $description;
 
-        $this->rooms = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->rooms = new ArrayCollection();
     }
 }

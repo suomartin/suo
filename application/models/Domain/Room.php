@@ -28,17 +28,23 @@ class Room
     protected $description;
 
     /**
+     * @Column(type="boolean")
+     */
+    protected $can_record;
+
+    /**
      * @ManyToMany(targetEntity="Atm", mappedBy="rooms")
      * @JoinTable(name="atms_rooms")
      */
     protected $atms;
 
     /**
-     * @Column(type="boolean")
+     * @ManyToMany(targetEntity="User", mappedBy="rooms")
+     * @JoinTable(name="users_rooms")
      */
-    protected $record;
+    protected $users;
 
-    public function __construct($number, $description, $record = true)
+    public function __construct($number, $description, $can_record = true)
     {
         $this->number = $number;
         if (!$description) {
@@ -46,9 +52,10 @@ class Room
         }
         $this->description = $description;
 
-        $this->atms = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->can_record = $can_record;
 
-        $this->record = $record;
+        $this->atms = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
 }
