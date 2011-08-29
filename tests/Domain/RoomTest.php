@@ -37,16 +37,16 @@ class RoomTest extends \PHPUnit_Framework_TestCase
         $this->assertAttributeEquals('', 'description', $o_room);
     }
 
-    public function testHasRecordTrue()
+    public function testHasCanRecordTrue()
     {
         $o_room = new Room('1', 'reg');
-        $this->assertAttributeEquals(true, 'record', $o_room);
+        $this->assertAttributeEquals(true, 'can_record', $o_room);
     }
 
-    public function testHasRecordFalse()
+    public function testHasCanRecordFalse()
     {
         $o_room = new Room('1', 'reg', false);
-        $this->assertAttributeEquals(false, 'record', $o_room);
+        $this->assertAttributeEquals(false, 'can_record', $o_room);
     }
 
 }

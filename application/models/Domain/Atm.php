@@ -33,9 +33,9 @@ class Atm
      */
     protected $rooms;
 
-    public function __construct($netaddress, $description)
+    public function __construct($netaddress, $description = '')
     {
-        if (!$netaddress) {
+        if ('' === $netaddress) {
             throw new \DomainException('Net address cannot be empty');
         }
         $this->netaddress = $netaddress;

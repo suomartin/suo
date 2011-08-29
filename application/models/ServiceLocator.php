@@ -23,15 +23,14 @@ class ServiceLocator
     protected static $config;
 
     /**
-     *
      * @var Services\TicketService
      */
     protected static $o_ticket_service;
 
     /**
-     * @var Doctrine\Orm\EntityRepository
+     * @var array
      */
-    protected static $o_room_repository;
+    protected static $a_o_repositories = array();
 
     /**
      * @return Doctrine\DBAL\Connection
@@ -99,7 +98,7 @@ class ServiceLocator
      */
     public static function getEm()
     {
-        if (self::$em === null) {
+        if (null == self::$em) {
             $cache = self::getCache();
             $db = self::getDb();
             $config = new \Doctrine\ORM\Configuration();
@@ -126,27 +125,29 @@ class ServiceLocator
     }
 
     /**
-     * Set Room repository
+     * Set repository
      *
+     * @param string $s_repo_name
      * @param Doctrine\Orm\EntityRepository $o_repository repository
      */
-    public static function setRoomRepository(Doctrine\Orm\EntityRepository $o_repository)
+    public static function setRepository($s_repo_name, Doctrine\Orm\EntityRepository $o_repository)
     {
-        self::$o_room_repository = $o_repository;
+        self::$a_o_repositories[$s_repo_name] = $o_repository;
     }
 
     /**
-     * Get Room repository
+     * Get repository
      *
+     * @param  string $s_repo_name
      * @return Doctrine\Orm\EntityRepository
      */
-    public static function getRoomRepository()
+    public static function getRepository($s_repo_name)
     {
-        if (null === self::$o_room_repository) {
-            self::$o_room_repository = self::getEm()->getRepository('\Domain\Room');
+        if (!isset(self::$a_o_repositories[$s_repo_name])) {
+            self::$a_o_repositories[$s_repo_name] = self::getEm()->getRepository('\Domain\\' . $s_repo_name);
         }
 
-        return self::$o_room_repository;
+        return self::$a_o_repositories[$s_repo_name];
     }
 
     /**

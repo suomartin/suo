@@ -47,7 +47,7 @@ class Room
     public function __construct($number, $description, $can_record = true)
     {
         $this->number = $number;
-        if (!$description) {
+        if ('' === $description) {
             throw new \DomainException('Room description cannot be empty');
         }
         $this->description = $description;

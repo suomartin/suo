@@ -18,16 +18,24 @@ class TicketTest extends \PHPUnit_Framework_TestCase
      */
     protected function getRoom()
     {
-        $o_room = new Room('1', 'reg');
+        $o_room = $this->getMock('Domain\Room', array(), array(), '', false);
 
         return $o_room;
+    }
+
+    protected function getCoupon()
+    {
+        $o_coupon = $this->getMock('Domain\Coupon', array(), array(), '', false);
+
+        return $o_coupon;
     }
 
     public function testHasId()
     {
         $o_room = $this->getRoom();
+        $o_coupon = $this->getCoupon();
 
-        $o_ticket = new Ticket($o_room);
+        $o_ticket = new Ticket($o_room, $o_coupon, new \DateTime('now'));
 
         $this->assertAttributeEmpty('id', $o_ticket);
     }
@@ -35,50 +43,55 @@ class TicketTest extends \PHPUnit_Framework_TestCase
     public function testHasCreationTime()
     {
         $o_room = $this->getRoom();
+        $o_coupon = $this->getCoupon();
 
-        $o_ticket = new Ticket($o_room);
+        $o_ticket = new Ticket($o_room, $o_coupon, new \DateTime('now'));
 
         $this->assertAttributeEquals(new \DateTime('now'), 'creation_time', $o_ticket);
-    }
-
-    public function testHasStartDate()
-    {
-        $o_room = $this->getRoom();
-
-        $o_ticket = new Ticket($o_room);
-
-        $this->assertAttributeEquals(new \DateTime('now'), 'start_date', $o_ticket);
     }
 
     public function testHasStartTime()
     {
         $o_room = $this->getRoom();
+        $o_coupon = $this->getCoupon();
+        $o_start_time = new \DateTime('now');
 
-        $o_ticket = new Ticket($o_room);
+        $o_ticket = new Ticket($o_room, $o_coupon, $o_start_time);
 
-        $this->assertAttributeEquals(new \DateTime('now'), 'start_time', $o_ticket);
+        $this->assertAttributeEquals($o_start_time, 'start_time', $o_ticket);
     }
 
-    public function testHasStartDateSet()
+    public function testHasStartTimeNotNow()
     {
         $o_room = $this->getRoom();
+        $o_coupon = $this->getCoupon();
+        $o_start_time = new \DateTime('2011-01-01 10:00:00');
 
-        $s_expected = '2011-01-01';
+        $o_ticket = new Ticket($o_room, $o_coupon, $o_start_time);
 
-        $o_ticket = new Ticket($o_room, $s_expected);
-
-        $this->assertAttributeEquals(new \DateTime($s_expected), 'start_date', $o_ticket);
+        $this->assertAttributeEquals($o_start_time, 'start_time', $o_ticket);
     }
 
-    public function testHasStartTimeSet()
+    public function testDefaultStatus()
     {
         $o_room = $this->getRoom();
+        $o_coupon = $this->getCoupon();
+        $o_ticket = new Ticket($o_room, $o_coupon, new \DateTime('now'));
 
-        $s_expected = '10:00:00';
+        $s_expected = Ticket::STATUS_CREATED;
+        $this->assertAttributeEquals($s_expected, 'status', $o_ticket);
+    }
 
-        $o_ticket = new Ticket($o_room, 'now', $s_expected);
+    public function testSetStatus()
+    {
+        $o_room = $this->getRoom();
+        $o_coupon = $this->getCoupon();
+        $o_ticket = new Ticket($o_room, $o_coupon, new \DateTime('now'));
 
-        $this->assertAttributeEquals(new \DateTime($s_expected), 'start_time', $o_ticket);
+        $s_expected = Ticket::STATUS_CALLING;
+        $o_ticket->setStatus($s_expected);
+
+        $this->assertAttributeEquals($s_expected, 'status', $o_ticket);
     }
 
 }
