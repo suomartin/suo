@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>programs/aphp64/PEAR</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!--[if IE]><script src="excanvas.compressed.js"></script><![endif]-->
+    <script src="RGraph.common.core.js" ></script>
+    <script src="RGraph.common.tooltips.js" ></script>
+    <script src="RGraph.bar.js" ></script>
+    <script src="RGraph.scatter.js" ></script>
+  </head>
+
+  <body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr><td class="title">programs/aphp64/PEAR</td></tr>
+      <tr><td><div align="center"><p><a href="programs_aphp64_PEAR.html">Back to Code Coverage report</a></p></div></td></tr>
+      <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
+    </table>
+
+    <br />
+
+    <center>
+      <table width="90%" cellpadding="2" cellspacing="1" border="0">
+        <tr>
+          <td valign="top">
+            <h2>Class Coverage Distribution</h2>
+            <canvas id="classCoverageDistribution" width="475" height="200"></canvas>
+            <script>
+            var ccd = new RGraph.Bar('classCoverageDistribution', [32,6,1,1,0,0,2,0,0,0,0,0]);
+            ccd.Set('chart.background.barcolor1', 'white');
+            ccd.Set('chart.background.barcolor2', 'white');
+            ccd.Set('chart.colors', ['blue']);
+            ccd.Set('chart.shadow', true);
+            ccd.Set('chart.shadow.offsetx', 3);
+            ccd.Set('chart.shadow.offsety', 3);
+            ccd.Set('chart.labels', ['0%','0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-100%','100%']);
+            ccd.Set('chart.text.size', 5);
+            ccd.Draw();
+            </script>
+          </td>
+
+          <td valign="top">
+            <h2>Class Complexity</h2>
+            <canvas id="classComplexity" width="475" height="200"></canvas>
+            <script>
+            var cc = new RGraph.Scatter('classComplexity', [[4.6875,42,"blue","ArrayCollection"],[4.1666666666667,14,"blue","EventManager"],[0.98039215686275,57,"blue","Configuration"],[50,1,"blue","LockMode"],[0.59880239520958,73,"blue","EntityManager"],[1.8181818181818,27,"blue","EntityRepository"],[2.2222222222222,28,"blue","ResultSetMapping"],[0,21,"blue","File_Iterator"],[0,16,"blue","File_Iterator_Factory"],[58.620689655172,11,"blue","Text_Template"],[0,59,"blue","Zend_Application"],[0,12,"blue","Zend_Application_Bootstrap_Bootstrap"],[0,97,"blue","Zend_Application_Bootstrap_BootstrapAbstract"],[0,2,"blue","Zend_Application_Module_Autoloader"],[0,11,"blue","Zend_Application_Module_Bootstrap"],[0,30,"blue","Zend_Application_Resource_Frontcontroller"],[0,3,"blue","Zend_Application_Resource_Layout"],[0,15,"blue","Zend_Application_Resource_Modules"],[0,17,"blue","Zend_Application_Resource_ResourceAbstract"],[0,55,"blue","Zend_Config"],[0,32,"blue","Zend_Config_Ini"],[0,65,"blue","Zend_Controller_Action"],[0,13,"blue","Zend_Controller_Action_Helper_Abstract"],[0,38,"blue","Zend_Controller_Action_HelperBroker"],[0,29,"blue","Zend_Controller_Action_HelperBroker_PriorityStack"],[0,41,"blue","Zend_Controller_Dispatcher_Abstract"],[0,57,"blue","Zend_Controller_Dispatcher_Standard"],[0,113,"blue","Zend_Controller_Front"],[0,10,"blue","Zend_Controller_Plugin_Abstract"],[0,52,"blue","Zend_Controller_Plugin_Broker"],[0,33,"blue","Zend_Controller_Request_Abstract"],[0,109,"blue","Zend_Controller_Response_Abstract"],[0,85,"blue","Zend_Layout"],[0,16,"blue","Zend_Layout_Controller_Action_Helper_Layout"],[0,17,"blue","Zend_Layout_Controller_Plugin_Layout"],[24.038461538462,41,"blue","Zend_Loader"],[18.811881188119,82,"blue","Zend_Loader_Autoloader"],[0,54,"blue","Zend_Loader_Autoloader_Resource"],[0,73,"blue","Zend_Loader_PluginLoader"],[0,17,"blue","Zend_Registry"],[0,34,"blue","Zend_View_Helper_Placeholder_Container_Abstract"],[0,13,"blue","Zend_View_Helper_Placeholder_Registry"]]);
+            cc.Set('chart.xmax', 100);
+            cc.Set('chart.background.barcolor1', 'white');
+            cc.Set('chart.background.barcolor2', 'white');
+            cc.Set('chart.tickmarks', 'plus');
+            cc.Set('chart.ticksize', 5);
+            cc.Set('chart.text.size', 5);
+            cc.Set('chart.ylabels', false);
+            cc.Draw();
+            </script>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <h2>Top Project Risks</h2>
+            <ul>
+              <li><a href="programs_aphp64_PEAR_File_Iterator_Factory.php.html#58">File_Iterator_Factory</a> (272)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Layout_Controller_Action_Helper_Layout.php.html#36">Zend_Layout_Controller_Action_Helper_Layout</a> (272)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Application_Resource_Modules.php.html#38">Zend_Application_Resource_Modules</a> (240)</li>
+              <li><a href="programs_aphp64_PEAR_Doctrine_Common_EventManager.php.html#39">EventManager</a> (186)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Action_Helper_Abstract.php.html#35">Zend_Controller_Action_Helper_Abstract</a> (182)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_View_Helper_Placeholder_Registry.php.html#40">Zend_View_Helper_Placeholder_Registry</a> (182)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Application_Bootstrap_Bootstrap.php.html#35">Zend_Application_Bootstrap_Bootstrap</a> (156)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Application_Module_Bootstrap.php.html#39">Zend_Application_Module_Bootstrap</a> (132)</li>
+              <li><a href="programs_aphp64_PEAR_Text_Template.php.html#58">Text_Template</a> (19)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Application_Resource_Layout.php.html#39">Zend_Application_Resource_Layout</a> (12)</li>
+
+            </ul>
+          </td>
+
+          <td valign="top">
+            <h2>Least Tested Methods</h2>
+            <ul>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#233">Zend_Controller_Plugin_Broker::routeStartup</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#256">Zend_Controller_Plugin_Broker::routeShutdown</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#283">Zend_Controller_Plugin_Broker::dispatchLoopStartup</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#305">Zend_Controller_Plugin_Broker::preDispatch</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#220">Zend_Controller_Plugin_Broker::getResponse</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#203">Zend_Controller_Plugin_Broker::setResponse</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#165">Zend_Controller_Plugin_Broker::getPlugins</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#176">Zend_Controller_Plugin_Broker::setRequest</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#192">Zend_Controller_Plugin_Broker::getRequest</a> (0%)</li>
+              <li><a href="programs_aphp64_PEAR_Zend_Controller_Plugin_Broker.php.html#329">Zend_Controller_Plugin_Broker::postDispatch</a> (0%)</li>
+
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </center>
+
+    <br />
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.4</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.6-Win64</a> and PHPUnit 3.5.14 at Wed Aug 31 20:52:51 VLAST 2011.</td></tr>
+    </table>
+
+    <br/>
+  </body>
+</html>

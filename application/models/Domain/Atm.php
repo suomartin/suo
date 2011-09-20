@@ -5,7 +5,7 @@ namespace Domain;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity
+ * @Entity(repositoryClass="Domain\AtmRepository")
  * @Table(name="atm")
  */
 class Atm
@@ -18,7 +18,7 @@ class Atm
     protected $id;
 
     /**
-     * @Column(type="string", length=15)
+     * @Column(type="string", length=15, unique=true)
      */
     protected $netaddress;
 
@@ -42,5 +42,25 @@ class Atm
         $this->description = $description;
 
         $this->rooms = new ArrayCollection();
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getNetaddress()
+    {
+        return $this->netaddress;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getRooms()
+    {
+        return $this->rooms;
     }
 }

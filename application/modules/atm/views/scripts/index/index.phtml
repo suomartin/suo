@@ -1,1 +1,13 @@
-aaa
+<?php if (true == $this->b_error) :?>
+<h1 id="error"><?= $this->s_error_message?></h1>
+<?php else : ?>
+<table id="rooms">
+<?php foreach ($this->a_rooms as $o_room) :?>
+    <tr>
+        <td><?= $o_room->getId();?></td>
+        <td><?= $o_room->getNumber();?></td>
+        <td><?= $o_room->getDescription();?></td>
+    </tr>
+<?php endforeach;?>
+</table>
+<?php endif; ?>

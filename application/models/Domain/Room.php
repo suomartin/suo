@@ -58,4 +58,36 @@ class Room
         $this->users = new ArrayCollection();
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getCan_record()
+    {
+        return $this->can_record;
+    }
+
+    public function getAtms()
+    {
+        return $this->atms;
+    }
+
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+
+
 }

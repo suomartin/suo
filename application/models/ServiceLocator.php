@@ -5,22 +5,22 @@ class ServiceLocator
     /**
      * @var \Doctrine\ORM\EntityManager
      */
-    protected static $em;
+    protected static $o_em;
 
     /**
      * @var Doctrine\DBAL\Connection
      */
-    protected static $db;
+    protected static $o_db;
 
     /**
      * @var Doctrine\Common\Cache\AbstractCache
      */
-    protected static $cache;
+    protected static $o_cache;
 
     /**
      * @var Zend_Config
      */
-    protected static $config;
+    protected static $o_config;
 
     /**
      * @var Services\TicketService
@@ -37,12 +37,12 @@ class ServiceLocator
      */
     public static function getDb()
     {
-        if (self::$db === null) {
+        if (self::$o_db === null) {
             $dbConfig = self::getConfig()->get('doctrine')->get('db');
-            self::$db = Doctrine\DBAL\DriverManager::getConnection($dbConfig->toArray());
+            self::$o_db = Doctrine\DBAL\DriverManager::getConnection($dbConfig->toArray());
         }
 
-        return self::$db;
+        return self::$o_db;
     }
 
     /**
@@ -58,13 +58,13 @@ class ServiceLocator
      */
     public static function getCache()
     {
-        if (self::$cache === null) {
+        if (self::$o_cache === null) {
             $doctrineConfig = self::getConfig()->get('doctrine');
             $cacheClass = $doctrineConfig->get('cacheClass');
-            self::$cache = new $cacheClass;
+            self::$o_cache = new $cacheClass;
         }
 
-        return self::$cache;
+        return self::$o_cache;
     }
 
     /**
@@ -72,16 +72,16 @@ class ServiceLocator
      */
     public static function getConfig()
     {
-        if (self::$config === null) {
-            self::$config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV, true);
+        if (self::$o_config === null) {
+            self::$o_config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV, true);
             if (is_readable(APPLICATION_PATH . '/configs/application.local.ini')) {
-                self::$config->merge(new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.local.ini',
+                self::$o_config->merge(new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.local.ini',
                                                          APPLICATION_ENV));
             }
-            self::$config->setReadOnly();
+            self::$o_config->setReadOnly();
         }
 
-        return self::$config;
+        return self::$o_config;
     }
 
     /**
@@ -90,7 +90,7 @@ class ServiceLocator
      */
     public static function setConfig(Zend_Config $config)
     {
-        self::$config = $config;
+        self::$o_config = $config;
     }
 
     /**
@@ -98,7 +98,7 @@ class ServiceLocator
      */
     public static function getEm()
     {
-        if (null == self::$em) {
+        if (null == self::$o_em) {
             $cache = self::getCache();
             $db = self::getDb();
             $config = new \Doctrine\ORM\Configuration();
@@ -109,10 +109,10 @@ class ServiceLocator
             $config->setProxyDir(APPLICATION_PATH . '/models/Infrastructure/Proxies');
             $config->setProxyNamespace('Infrastructure\Proxies');
             $config->setAutoGenerateProxyClasses(false);
-            self::$em = \Doctrine\ORM\EntityManager::create($db, $config);
+            self::$o_em = \Doctrine\ORM\EntityManager::create($db, $config);
         }
 
-        return self::$em;
+        return self::$o_em;
     }
 
     /**
@@ -121,7 +121,7 @@ class ServiceLocator
      */
     public static function setEm(Doctrine\Orm\EntityManager $em)
     {
-        self::$em = $em;
+        self::$o_em = $em;
     }
 
     /**
@@ -161,4 +161,17 @@ class ServiceLocator
 
         return self::$o_ticket_service;
     }
+
+    /**
+     * @return Services\AtmService
+     */
+    public static function getAtmService()
+    {
+        if (null == self::$o_atm_service) {
+            self::$o_atm_service = new \Services\AtmService();
+        }
+
+        return self::$o_atm_service;
+    }
+
 }
